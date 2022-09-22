@@ -1,0 +1,25 @@
+import React from "react";
+import Button from "@mui/material/Button";
+import { auth } from "./firebase";
+import { provider } from "./firebase";
+import "./Login.css";
+
+const Login = () => {
+  const signIn = () => {
+    auth.signInWithPopup(provider).catch((error) => alert(error.message));
+  };
+
+  return (
+    <div className="login">
+      <div className="login__logo">
+        <img
+          src="data:image/png;base64,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"
+          alt="chat room"
+        />
+      </div>
+      <Button onClick={signIn}>Sign In</Button>
+    </div>
+  );
+};
+
+export default Login;
